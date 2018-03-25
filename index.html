@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="pyrite-component.js"></script>
+    <script src="pyrite-router.js"></script>
+    <link rel="import" href="main-page/main-page.html">
+    <link rel="import" href="login-page/login-page.html">
+    <link rel="import" href="example-component/example-component.html">
+</head>
+<body>
+    <pyrite-router default="main">
+        <pyrite-path name="main" path="/" component="main-page"></pyrite-path>
+        <pyrite-path name="login" path="/login" component="login-page"></pyrite-path>
+    </pyrite-router>
+</body>
+</html>
