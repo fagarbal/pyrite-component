@@ -1,6 +1,7 @@
 class HomeComponent extends HTMLPyriteComponent {
     onConnect() {
         console.log('home connected')
+        console.log(this.refs.button);
     }
 
     onDisconnect() {
