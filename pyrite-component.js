@@ -31,9 +31,7 @@
             mode: 'closed'
         });
 
-        const currentScript = this.constructor.currentScript || document.currentScript.ownerDocument;
-
-        const element = currentScript.querySelector('template');
+        const element = this.currentScript.querySelector('template');
         this.__template = element.content.cloneNode(true);
         const instance = element.cloneNode(true);
 
@@ -85,7 +83,7 @@
             this.onConnect();
         }
     
-        disconnectCallback() {
+        disconnectedCallback() {
             this.onDisconnect();
         }
     
@@ -99,10 +97,19 @@
     
         onConnect() {}
         onDisconnect() {}
+        onUpdate() {}
         onBeforeUpdate() {}
     }
     
     window.HTMLPyriteComponent = HTMLPyriteComponent;
     window.HTMLPyriteScripts = {};
-})();
 
+    const define = window.customElements.define.bind(window.customElements);
+    
+    window.customElements.define = (name, component) => {
+        component.prototype.currentScript = document.currentScript.ownerDocument;
+
+        return define(name, component);
+    };
+
+})();
